@@ -48,6 +48,12 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                InputMethodManager manager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+                if(manager.isAcceptingText())
+                {
+                    manager.hideSoftInputFromWindow(EmailField.getWindowToken(),0);
+                }
+
                 if(!TextUtils.isEmpty(EmailField.getText().toString()) && !TextUtils.isEmpty(PasswordField.getText().toString()) )
                 {
                     String email = EmailField.getText().toString();
