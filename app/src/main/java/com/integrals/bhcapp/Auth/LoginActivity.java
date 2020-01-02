@@ -18,6 +18,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 import com.integrals.bhcapp.Helper.SnackbarMessage;
 import com.integrals.bhcapp.MainActivity;
 import com.integrals.bhcapp.R;
@@ -56,9 +57,9 @@ public class LoginActivity extends AppCompatActivity {
 
                 if(!TextUtils.isEmpty(EmailField.getText().toString()) && !TextUtils.isEmpty(PasswordField.getText().toString()) )
                 {
-                    String email = EmailField.getText().toString();
-                    String password =  PasswordField.getText().toString();
-                    FirebaseAuth.getInstance().createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    final String email = EmailField.getText().toString();
+                    final String password =  PasswordField.getText().toString();
+                    FirebaseAuth.getInstance().signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
 
@@ -69,7 +70,31 @@ public class LoginActivity extends AppCompatActivity {
                             }
                             else
                             {
-                                new SnackbarMessage().ShowSnackbarMessage(RootAuthLayout,task.getException().toString(),false);
+                                try
+                                {
+                                    throw task.getException();
+                                }
+                                catch (FirebaseAuthInvalidUserException e)
+                                {
+                                    FirebaseAuth.getInstance().createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<AuthResult> task) {
+                                            if(task.isSuccessful())
+                                            {
+                                                startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
+                                                finish();
+                                            }
+                                            else
+                                            {
+                                                new SnackbarMessage().ShowSnackbarMessage(RootAuthLayout,task.getException().toString(),false);
+                                            }
+                                        }
+                                    });
+                                }
+                                catch (Exception e)
+                                {
+                                    new SnackbarMessage().ShowSnackbarMessage(RootAuthLayout,task.getException().toString(),false);
+                                }
                             }
 
                         }
