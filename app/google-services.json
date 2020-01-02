@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "947548671069",
+    "firebase_url": "https://bhcapp-88d49.firebaseio.com",
+    "project_id": "bhcapp-88d49",
+    "storage_bucket": "bhcapp-88d49.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:947548671069:android:0fd64aadcef102d60711b4",
+        "android_client_info": {
+          "package_name": "com.integrals.bhcapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "947548671069-0lkkm6spho7fcj189ndum2qtq46uhava.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.integrals.bhcapp",
+            "certificate_hash": "79f92cb6fc3633344d6b7fb8b4cfbea386f34952"
+          }
+        },
+        {
+          "client_id": "947548671069-p180nmnmj8g6iaa076f4i7uu6tf92eik.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAAO3qFuNeNt3guf5fx_lSbRzE1mrq5EJM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "947548671069-p180nmnmj8g6iaa076f4i7uu6tf92eik.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

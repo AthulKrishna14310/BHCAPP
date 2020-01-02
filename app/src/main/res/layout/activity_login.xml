@@ -4,6 +4,51 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Auth.LoginActivity">
+    tools:context=".Auth.LoginActivity"
+    android:id="@+id/auth_root_view">
+
+    <EditText
+        android:id="@+id/auth_email_field"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_centerHorizontal="true"
+        android:hint="Email here"
+        android:gravity="center"
+        android:inputType="textEmailAddress"/>
+    <EditText
+        android:id="@+id/auth_password_field"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_centerHorizontal="true"
+        android:hint="Password here"
+        android:gravity="center"
+        android:layout_below="@id/auth_email_field"
+        android:inputType="textPassword"/>
+
+    <Button
+        android:id="@+id/auth_login_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/auth_password_field"
+        android:text="login"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:id="@+id/auth_forgot_password_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:text="Forgot password"
+        android:layout_marginBottom="20dp"
+        />
 
 </RelativeLayout>
