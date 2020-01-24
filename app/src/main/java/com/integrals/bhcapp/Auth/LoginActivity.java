@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RelativeLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -26,9 +26,9 @@ import com.integrals.bhcapp.R;
 public class LoginActivity extends AppCompatActivity {
 
     EditText EmailField,PasswordField;
-    Button LoginBtn;
+    TextView LoginBtn;
     TextView ForgotPasswordTV;
-    RelativeLayout RootAuthLayout;
+    LinearLayout RootAuthLayout;
     Dialog PasswordRecovery;
 
 
@@ -36,13 +36,14 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_login_2);
 
-        EmailField = findViewById(R.id.auth_email_field);
-        PasswordField = findViewById(R.id.auth_password_field);
+        getSupportActionBar().hide();
+        EmailField = findViewById(R.id.reg_name_field);
+        PasswordField = findViewById(R.id.reg_class_field);
         LoginBtn = findViewById(R.id.auth_login_btn);
         ForgotPasswordTV = findViewById(R.id.auth_forgot_password_tv);
-        RootAuthLayout= findViewById(R.id.auth_root_view);
+        RootAuthLayout= findViewById(R.id.root_reg_view);
         PasswordRecovery = new Dialog(this);
 
         LoginBtn.setOnClickListener(new View.OnClickListener() {
@@ -65,7 +66,10 @@ public class LoginActivity extends AppCompatActivity {
 
                             if(task.isSuccessful())
                             {
-                                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                                Intent i=new Intent(LoginActivity.this,MainActivity.class);
+                                i.putExtra("email",email);
+                                i.putExtra("password",password);
+                                startActivity(i);
                                 finish();
                             }
                             else
@@ -76,20 +80,10 @@ public class LoginActivity extends AppCompatActivity {
                                 }
                                 catch (FirebaseAuthInvalidUserException e)
                                 {
-                                    FirebaseAuth.getInstance().createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                                        @Override
-                                        public void onComplete(@NonNull Task<AuthResult> task) {
-                                            if(task.isSuccessful())
-                                            {
-                                                startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
-                                                finish();
-                                            }
-                                            else
-                                            {
-                                                new SnackbarMessage().ShowSnackbarMessage(RootAuthLayout,task.getException().toString(),false);
-                                            }
-                                        }
-                                    });
+                                    Intent i=new Intent(LoginActivity.this,RegisterActivity.class);
+                                    i.putExtra("email",email);
+                                    i.putExtra("password",password);
+                                    startActivity(i);
                                 }
                                 catch (Exception e)
                                 {

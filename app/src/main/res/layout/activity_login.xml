@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Auth.LoginActivity"
-    android:id="@+id/auth_root_view">
+    android:id="@+id/root_reg_view">
 
     <EditText
-        android:id="@+id/auth_email_field"
+        android:id="@+id/reg_name_field"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
@@ -19,7 +19,7 @@
         android:gravity="center"
         android:inputType="textEmailAddress"/>
     <EditText
-        android:id="@+id/auth_password_field"
+        android:id="@+id/reg_class_field"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -28,7 +28,7 @@
         android:layout_centerHorizontal="true"
         android:hint="Password here"
         android:gravity="center"
-        android:layout_below="@id/auth_email_field"
+        android:layout_below="@id/reg_name_field"
         android:inputType="textPassword"/>
 
     <Button
@@ -36,7 +36,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/auth_password_field"
+        android:layout_below="@id/reg_class_field"
         android:text="login"
         android:layout_marginTop="20dp"/>
 

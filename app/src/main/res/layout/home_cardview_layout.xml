@@ -46,6 +46,7 @@
                 android:id="@+id/home_card_exercise_description_TV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
                 android:text="Name of exercise"
                 android:textSize="15sp" />
 
